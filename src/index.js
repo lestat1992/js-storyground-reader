@@ -1,12 +1,19 @@
-import _ from "lodash";
+import Vue from "vue";
 
-function component() {
-  const element = document.createElement("div");
+export default function storyGround(target) {
+  console.log("hello");
 
-  // Lodash, now imported by this script
-  element.innerHTML = _.join(["6 Hello", "webpack"], " ");
-
-  return element;
+  new Vue({
+    el: target,
+    data: {
+      //message: "Hello Vue!",
+    },
+    template: "<div>TEST</div>",
+    /*
+    components: { App },
+    render: (h) => {
+      return h("App");
+    },
+    */
+  });
 }
-
-document.body.appendChild(component());

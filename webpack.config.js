@@ -5,5 +5,13 @@ module.exports = {
   output: {
     filename: "main.js",
     path: path.resolve(__dirname, "dist"),
+    library: "storyGround",
+    libraryTarget: "window",
+    libraryExport: "default",
+  },
+  resolve: {
+    alias: {
+      vue$: "vue/dist/vue.esm.js",
+    },
   },
 };
