@@ -1,19 +1,14 @@
-import Vue from "vue";
+import { createApp } from "vue";
+import { game } from "vue-storyground-reader";
 
-export default function storyGround(target) {
-  console.log("hello");
+let app = {
+  name: "Test",
+  components: {
+    game,
+  },
+  template: `
+      <game/>
+    `,
+};
 
-  new Vue({
-    el: target,
-    data: {
-      //message: "Hello Vue!",
-    },
-    template: "<div>TEST</div>",
-    /*
-    components: { App },
-    render: (h) => {
-      return h("App");
-    },
-    */
-  });
-}
+createApp(app).mount("#app-test");
