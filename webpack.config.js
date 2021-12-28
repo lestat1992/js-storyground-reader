@@ -16,7 +16,7 @@ module.exports = {
         test: /\.vue$/,
         loader: "vue-loader",
       },
-      /*
+
       // this will apply to both plain `.js` files
       // AND `<script>` blocks in `.vue` files
       {
@@ -29,7 +29,6 @@ module.exports = {
         test: /\.css$/,
         use: ["vue-style-loader", "css-loader"],
       },
-      */
     ],
   },
   resolve: {
