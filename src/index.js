@@ -25,4 +25,4 @@ Element.prototype.StoryGround = function (objSettings) {
   createApp(app).mount(this);
 };
 
-module.exports = Element.prototype.StoryGround;
+export {};
