@@ -1,5 +1,6 @@
 const path = require("path");
 const { VueLoaderPlugin } = require("vue-loader");
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.js",
@@ -39,5 +40,8 @@ module.exports = {
   plugins: [
     // make sure to include the plugin for the magic
     new VueLoaderPlugin(),
+    new CopyPlugin({
+      patterns: [{ from: "src/defaultMedia", to: "defaultMedia" }],
+    }),
   ],
 };
