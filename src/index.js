@@ -21,6 +21,10 @@ Element.prototype.StoryGround = function (objSettings) {
         v-bind:gameData="objSettings.gameData"
         v-bind:indexMedia="objSettings.indexMedia"
         v-bind:pathMediaDir="objSettings.pathMediaDir"
+        v-bind:disableIlustration="objSettings.disableIlustration"
+        v-bind:stopLink="objSettings.stopLink"
+        v-bind:width="objSettings.width"
+        v-bind:height="objSettings.height"
       />
     `,
   };
