@@ -40,10 +40,9 @@ Se si vorranno utilizzare i media direttamente dal proprio dominio, sarà necess
 | `pathMediaDir`       | `String`  | `"./media"`         | l'indirizzo assoluto alla cartella in cui sono presenti i media                                                                                                                                                                                      |
 | `indexMedia`         | `Object`  | `defaultIndexMedia` | un'indice dei media presenti nella storia è necessario se il parametro `editorUsage` è `false`                                                                                                                                                       |
 | `disableIlustration` | `Boolean` | `false`             | Rimuove dal la possibilità di visualizzare i media                                                                                                                                                                                                   |
-
-| `stopLink` | `Boolean` | `false` | inpedisce al visualizzatore di navigare in un'altra pagina visualizzando in un messaggio l'url di destinazione |
-| `langEditor` | `String` | `"en"` | La lingua in cui vengono visualizzati i messaggi di log |
-| `strings` | `Object` | `defaultStrings` | definisce le stringhe mostrate dal visualizzatore nei messaggi di log |
+| `stopLink`           | `Boolean` | `false`             | inpedisce al visualizzatore di navigare in un'altra pagina visualizzando in un messaggio l'url di destinazione                                                                                                                                       |
+| `langEditor`         | `String`  | `"en"`              | La lingua in cui vengono visualizzati i messaggi di log                                                                                                                                                                                              |
+| `strings`            | `Object`  | `defaultStrings`    | definisce le stringhe mostrate dal visualizzatore nei messaggi di log                                                                                                                                                                                |
 
 ### License
 
