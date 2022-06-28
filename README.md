@@ -20,12 +20,12 @@ Questo esempio è molto utile in una prima fase di **development** in qunto i me
 Se si vorranno utilizzare i media direttamente dal proprio dominio, sarà necessario aggiungere i seguenti parametri:
 
 ```js
-    document.getElementById("app-test").StoryGround({
-        gameData: jsonStory
-        pathMediaDir: "./media",
-        indexMedia: indexMediaObj
-        editorUsage: false
-    });
+document.getElementById("app-test").StoryGround({
+  gameData: jsonStory,
+  pathMediaDir: "./media",
+  indexMedia: indexMediaObj,
+  editorUsage: false,
+});
 ```
 
 **Una lista dei parametri della libreria**
