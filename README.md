@@ -6,7 +6,7 @@ Nonostante il nome la libreria non è scritta in vanilla Js, ma è un semplice w
 ## Installazione
 
 La libreria può anche essere scaricata al seguente indirizzo [vue-storyground-reader](https://storygroundeditor.com/downloads).
-Se non sarà fornito alcun parametro all'inizializzazione verrà visualizzata una storia "segna posto". Sarà necessario per visualizzare la propria storia avere a disposizione l'esportazione di una storia, quest'ultima contiene un file json e una cartella con i media della storia nella quale è anche presente un file indexMediaObj.json.
+Se non sarà fornito alcun parametro all'inizializzazione verrà visualizzata una storia "segna posto". Sarà necessario per visualizzare la propria storia avere a disposizione l'esportazione di una storia, quest'ultima contiene un file json contenente la storia e una cartella con i media della storia nella quale è anche presente un file indexMediaObj.json.
 Ecco il tuo primo esempio per iniziare:
 
 ```js
