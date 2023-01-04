@@ -9,6 +9,13 @@ Element.prototype.StoryGround = function (objSettings) {
         objSettings: objSettings,
       };
     },
+    mounted() {
+      console.log("mounting15 ----------------");
+      objSettings.afterNavigation;
+      console.log("..");
+      objSettings.afterNavigation();
+      console.log("--------------------------");
+    },
     components: {
       game,
     },
@@ -28,15 +35,18 @@ Element.prototype.StoryGround = function (objSettings) {
         v-bind:useTheme="objSettings.useTheme"
         v-bind:canEmit="objSettings.canEmit"
         v-bind:showToast="objSettings.showToast"
-        v-on:functionToEmitByTabs="objSettings.functionToEmitByTabs"
-        v-on:functionToEmitOnInit="objSettings.functionToEmitOnInit"
-        v-on:functionToEmitBeforeNavigation = "objSettings.functionToEmitBeforeNavigation"
-        v-on:functionToEmitAfterNavigation = "objSettings.functionToEmitAfterNavigation"
+        v-on:functionToEmitByTabs="objSettings.EmitByTabs ? objSettings.EmitByTabs() : false"
+        v-on:functionToEmitOnInit="objSettings.OnInit ? objSettings.OnInit() : false"
+        v-on:functionToEmitBeforeNavigation = " objSettings.beforeNavigation ? objSettings.beforeNavigation() : false "
+        v-on:functionToEmitAfterNavigation = " objSettings.afterNavigation ?  objSettings.afterNavigation() : false "
+        ref="gameRef"
       />
     `,
   };
 
   createApp(app).mount(this);
+
+  return app;
 };
 
 export {};
