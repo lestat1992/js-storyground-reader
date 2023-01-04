@@ -25,6 +25,13 @@ Element.prototype.StoryGround = function (objSettings) {
         v-bind:stopLink="objSettings.stopLink"
         v-bind:width="objSettings.width"
         v-bind:height="objSettings.height"
+        v-bind:useTheme="objSettings.useTheme"
+        v-bind:canEmit="objSettings.canEmit"
+        v-bind:showToast="objSettings.showToast"
+        v-on:functionToEmitByTabs="objSettings.functionToEmitByTabs"
+        v-on:functionToEmitOnInit="objSettings.functionToEmitOnInit"
+        v-on:functionToEmitBeforeNavigation = "objSettings.functionToEmitBeforeNavigation"
+        v-on:functionToEmitAfterNavigation = "objSettings.functionToEmitAfterNavigation"
       />
     `,
   };
