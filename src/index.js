@@ -10,11 +10,30 @@ Element.prototype.StoryGround = function (objSettings) {
       };
     },
     mounted() {
-      console.log("mounting15 ----------------");
-      objSettings.afterNavigation;
-      console.log("..");
-      objSettings.afterNavigation();
-      console.log("--------------------------");
+      //PORTA NELLA LIBRERIA VUE -------------------------------
+
+      let idToAdd = 0;
+      if (objSettings.id) {
+        idToAdd = objSettings.id;
+      }
+
+      window.addEventListener("getPlayerValues", (event) => {
+        localStorage.setItem(
+          "dataX",
+          JSON.stringify([{ val1: true, val2: "ciaone" }])
+        );
+      });
+      window.addEventListener("getCurrentTabValues", (event) => {
+        localStorage.setItem("dataX", "!!! some data from vue !!!");
+      });
+      //eventi set
+      window.addEventListener("setStartPoint", (event) => {
+        //console.log("!! this are some player values !!");
+      });
+      window.addEventListener("setPlayerValues", (event) => {
+        //console.log("!! this are some player values !!");
+      });
+      //--------------------------------------------------------
     },
     components: {
       game,
@@ -42,6 +61,22 @@ Element.prototype.StoryGround = function (objSettings) {
         ref="gameRef"
       />
     `,
+    getPlayerValues: () => {
+      window.dispatchEvent(new Event("getPlayerValues"));
+      let value = JSON.parse(localStorage.dataX);
+      localStorage.removeItem("dataX");
+      return value;
+    },
+    getCurrentTabValues: () => {
+      window.dispatchEvent(new Event("getCurrentTabValues"));
+    },
+    //eventi set
+    setStartPoint: () => {
+      window.dispatchEvent(new Event("setStartPoint"));
+    },
+    setPlayerValues: () => {
+      window.dispatchEvent(new Event("setPlayerValues"));
+    },
   };
 
   createApp(app).mount(this);

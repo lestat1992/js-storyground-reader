@@ -44,6 +44,7 @@
     };
 
     let test = document.getElementById("app-test").StoryGround({
+      id: 10,
       propLang: "it",
       langEditor: "it",
       strings: strings,
@@ -55,9 +56,23 @@
     });
 
 
-    console.log("ehi4-----------------------------------")
-    console.log(test.$refs)
-    console.log("--")
+    //ESEMPIO --------------------------------------
+    /*
+    window.addEventListener("testEvent", (event) => {
+      console.log("test event 1");
+    });
+
+    window.dispatchEvent(new Event("testEvent"));
+    */
+    //---------------------------------------------
+
+
+
+    //window.dispatchEvent(new Event("getPlayerValues"));
+    console.log("qui ci sono tutti i tuoi esempi:")
+    let valBello = test.getPlayerValues();
+    console.log(valBello)
+
 
   </script>
 </body>
