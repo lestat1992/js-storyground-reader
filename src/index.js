@@ -11,7 +11,7 @@ Element.prototype.StoryGround = function (objSettings) {
       };
     },
     mounted() {
-      //PORTA NELLA LIBRERIA VUE -------------------------------
+      //PORTA NELLA LIBRERIA VUE sostituisci localstorage json with your stuff-------------------------------
 
       let idToAdd = 0;
       if (objSettings.id) {
@@ -21,7 +21,7 @@ Element.prototype.StoryGround = function (objSettings) {
 
       ///CONTROLLA NOME EVENTI QUA SOTTO E NOME LOCAL STORAGE
 
-      window.addEventListener("getPlayerValues", (event) => {
+      window.addEventListener("getPlayerValues" + this.idStory, (event) => {
         //console.log("id NEL listener");
         //console.log(idToAdd);
         localStorage.setItem(
@@ -29,17 +29,28 @@ Element.prototype.StoryGround = function (objSettings) {
           JSON.stringify([{ val1: true, val2: "ciaone" }])
         );
       });
-      window.addEventListener("getCurrentTabValues", (event) => {
+      window.addEventListener("getCurrentTabValues" + this.idStory, (event) => {
         localStorage.setItem(
           "sg1Storage" + this.idStory,
-          "!!! some data from vue !!!"
+          JSON.stringify([{ val1: false, val2: "ciaone4" }])
         );
       });
       //eventi set
       window.addEventListener("setStartPoint" + this.idStory, (event) => {
-        //console.log("!! this are some player values !!");
+        let value = JSON.parse(localStorage["sg1Storage" + this.idStory]);
+        //SOSTITUISCI VALORE in data (vue package)
+        console.log("NUOVO VALORE 2");
+        console.log(value, localStorage["sg1Storage" + this.idStory]);
+
+        localStorage.removeItem("sg1Storage" + this.idStory);
       });
       window.addEventListener("setPlayerValues" + this.idStory, (event) => {
+        let value = JSON.parse(localStorage["sg1Storage" + this.idStory]);
+        //SOSTITUISCI VALORE in data (vue package)
+        console.log("NUOVO VALORE 4");
+        console.log(value, localStorage["sg1Storage" + this.idStory]);
+
+        localStorage.removeItem("sg1Storage" + this.idStory);
         //console.log("!! this are some player values !!");
       });
       //--------------------------------------------------------
@@ -71,21 +82,30 @@ Element.prototype.StoryGround = function (objSettings) {
       />
     `,
     getPlayerValues: () => {
-      console.log("..");
-      console.log(objSettings);
       window.dispatchEvent(new Event("getPlayerValues" + objSettings.id));
-      let value = JSON.parse(localStorage.sg1Storage);
-      localStorage.removeItem("sg1Storage");
+      let value = JSON.parse(localStorage["sg1Storage" + objSettings.id]);
+      localStorage.removeItem("sg1Storage" + objSettings.id);
       return value;
     },
     getCurrentTabValues: () => {
       window.dispatchEvent(new Event("getCurrentTabValues" + objSettings.id));
+      let value = JSON.parse(localStorage["sg1Storage" + objSettings.id]);
+      localStorage.removeItem("sg1Storage" + objSettings.id);
+      return value;
     },
     //eventi set
-    setStartPoint: () => {
+    setStartPoint: (params) => {
+      localStorage.setItem(
+        "sg1Storage" + objSettings.id,
+        JSON.stringify(params)
+      );
       window.dispatchEvent(new Event("setStartPoint" + objSettings.id));
     },
-    setPlayerValues: () => {
+    setPlayerValues: (params) => {
+      localStorage.setItem(
+        "sg1Storage" + objSettings.id,
+        JSON.stringify(params)
+      );
       window.dispatchEvent(new Event("setPlayerValues" + objSettings.id));
     },
   };
