@@ -75,10 +75,10 @@ Element.prototype.StoryGround = function (objSettings) {
         v-bind:useTheme="objSettings.useTheme"
         v-bind:canEmit="objSettings.canEmit"
         v-bind:showToast="objSettings.showToast"
-        v-on:functionToEmitByTabs="objSettings.EmitByTabs ? objSettings.EmitByTabs() : false"
-        v-on:functionToEmitOnInit="objSettings.OnInit ? objSettings.OnInit() : false"
-        v-on:functionToEmitBeforeNavigation = " objSettings.beforeNavigation ? objSettings.beforeNavigation() : false "
-        v-on:functionToEmitAfterNavigation = " objSettings.afterNavigation ?  objSettings.afterNavigation() : false "
+        v-on:emitByTabs="objSettings.EmitByTabs ? objSettings.EmitByTabs() : false"
+        v-on:onInit="objSettings.OnInit ? objSettings.OnInit() : false"
+        v-on:beforeNavigation = " objSettings.beforeNavigation ? objSettings.beforeNavigation() : false "
+        v-on:afterNavigation = " objSettings.afterNavigation ?  objSettings.afterNavigation() : false "
       />
     `,
     getPlayerValues: () => {
