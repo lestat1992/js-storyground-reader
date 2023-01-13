@@ -62,7 +62,7 @@ Element.prototype.StoryGround = function (objSettings) {
       <game 
         v-bind:sg1-id-stroy="idStory"
         v-bind:editorUsage="objSettings.editorUsage"
-        v-bind:propLang="objSettings.propLang"
+        v-bind:langStory="objSettings.langStory"
         v-bind:langEditor="objSettings.langEditor"
         v-bind:strings="objSettings.strings"
         v-bind:gameData="objSettings.gameData"
