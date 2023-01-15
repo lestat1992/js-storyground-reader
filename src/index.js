@@ -2,65 +2,20 @@ import { createApp } from "vue";
 import { game } from "vue-storyground-reader";
 
 Element.prototype.StoryGround = function (objSettings) {
-  let app = {
-    name: "StoryGround",
-    data() {
-      return {
-        objSettings: objSettings,
-        idStory: false,
-      };
-    },
-    mounted() {
-      //PORTA NELLA LIBRERIA VUE sostituisci localstorage json with your stuff-------------------------------
-
-      let idToAdd = 0;
-      if (objSettings.id) {
-        idToAdd = objSettings.id;
-      }
-      this.idStory = idToAdd;
-
-      ///CONTROLLA NOME EVENTI QUA SOTTO E NOME LOCAL STORAGE
-
-      window.addEventListener("getPlayerValues" + this.idStory, (event) => {
-        //console.log("id NEL listener");
-        //console.log(idToAdd);
-        localStorage.setItem(
-          "sg1Storage" + this.idStory,
-          JSON.stringify([{ val1: true, val2: "ciaone" }])
-        );
-      });
-      window.addEventListener("getCurrentTabValues" + this.idStory, (event) => {
-        localStorage.setItem(
-          "sg1Storage" + this.idStory,
-          JSON.stringify([{ val1: false, val2: "ciaone4" }])
-        );
-      });
-      //eventi set
-      window.addEventListener("setStartPoint" + this.idStory, (event) => {
-        let value = JSON.parse(localStorage["sg1Storage" + this.idStory]);
-        //SOSTITUISCI VALORE in data (vue package)
-        console.log("NUOVO VALORE 2");
-        console.log(value, localStorage["sg1Storage" + this.idStory]);
-
-        localStorage.removeItem("sg1Storage" + this.idStory);
-      });
-      window.addEventListener("setPlayerValues" + this.idStory, (event) => {
-        let value = JSON.parse(localStorage["sg1Storage" + this.idStory]);
-        //SOSTITUISCI VALORE in data (vue package)
-        console.log("NUOVO VALORE 4");
-        console.log(value, localStorage["sg1Storage" + this.idStory]);
-
-        localStorage.removeItem("sg1Storage" + this.idStory);
-        //console.log("!! this are some player values !!");
-      });
-      //--------------------------------------------------------
-    },
-    components: {
-      game,
-    },
-    template: `
+    let app = {
+        name: "StoryGround",
+        data() {
+            return {
+                objSettings: objSettings,
+                idStory: false,
+            };
+        },
+        components: {
+            game,
+        },
+        template: `
       <game 
-        v-bind:sg1-id-stroy="idStory"
+        v-bind:idStory="objSettings.idStory"
         v-bind:editorUsage="objSettings.editorUsage"
         v-bind:langStory="objSettings.langStory"
         v-bind:langEditor="objSettings.langEditor"
@@ -81,38 +36,53 @@ Element.prototype.StoryGround = function (objSettings) {
         v-on:afterNavigation = " objSettings.afterNavigation ?  objSettings.afterNavigation() : false "
       />
     `,
-    getPlayerValues: () => {
-      window.dispatchEvent(new Event("getPlayerValues" + objSettings.id));
-      let value = JSON.parse(localStorage["sg1Storage" + objSettings.id]);
-      localStorage.removeItem("sg1Storage" + objSettings.id);
-      return value;
-    },
-    getCurrentTabValues: () => {
-      window.dispatchEvent(new Event("getCurrentTabValues" + objSettings.id));
-      let value = JSON.parse(localStorage["sg1Storage" + objSettings.id]);
-      localStorage.removeItem("sg1Storage" + objSettings.id);
-      return value;
-    },
-    //eventi set
-    setStartPoint: (params) => {
-      localStorage.setItem(
-        "sg1Storage" + objSettings.id,
-        JSON.stringify(params)
-      );
-      window.dispatchEvent(new Event("setStartPoint" + objSettings.id));
-    },
-    setPlayerValues: (params) => {
-      localStorage.setItem(
-        "sg1Storage" + objSettings.id,
-        JSON.stringify(params)
-      );
-      window.dispatchEvent(new Event("setPlayerValues" + objSettings.id));
-    },
-  };
+        getPlayerValues: () => {
+            console.log("nome evento in .js: ");
+            console.log(
+                "getPlayerValues" +
+                    this.childNodes[0].getAttribute("sg1-id-stroy")
+            );
+            console.log("..");
 
-  createApp(app).mount(this);
+            let idStory = this.childNodes[0].getAttribute("sg1-id-stroy");
 
-  return app;
+            window.dispatchEvent(new Event("getPlayerValues" + idStory));
+            let value = JSON.parse(localStorage["sg1Storage" + idStory]);
+            localStorage.removeItem("sg1Storage" + idStory);
+            return value;
+        },
+        getCurrentTabValues: () => {
+            let idStory = this.childNodes[0].getAttribute("sg1-id-stroy");
+
+            window.dispatchEvent(new Event("getCurrentTabValues" + idStory));
+            let value = JSON.parse(localStorage["sg1Storage" + idStory]);
+            localStorage.removeItem("sg1Storage" + idStory);
+            return value;
+        },
+        //eventi set
+        setStartPoint: (params) => {
+            let idStory = this.childNodes[0].getAttribute("sg1-id-stroy");
+
+            localStorage.setItem(
+                "sg1Storage" + idStory,
+                JSON.stringify(params)
+            );
+            window.dispatchEvent(new Event("setStartPoint" + idStory));
+        },
+        setPlayerValues: (params) => {
+            let idStory = this.childNodes[0].getAttribute("sg1-id-stroy");
+
+            localStorage.setItem(
+                "sg1Storage" + idStory,
+                JSON.stringify(params)
+            );
+            window.dispatchEvent(new Event("setPlayerValues" + idStory));
+        },
+    };
+
+    createApp(app).mount(this);
+
+    return app;
 };
 
 export {};
