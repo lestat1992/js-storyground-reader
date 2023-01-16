@@ -2,18 +2,18 @@ import { createApp } from "vue";
 import { game } from "vue-storyground-reader";
 
 Element.prototype.StoryGround = function (objSettings) {
-    let app = {
-        name: "StoryGround",
-        data() {
-            return {
-                objSettings: objSettings,
-                idStory: false,
-            };
-        },
-        components: {
-            game,
-        },
-        template: `
+  let app = {
+    name: "StoryGround",
+    data() {
+      return {
+        objSettings: objSettings,
+        idStory: false,
+      };
+    },
+    components: {
+      game,
+    },
+    template: `
       <game 
         v-bind:idStory="objSettings.idStory"
         v-bind:editorUsage="objSettings.editorUsage"
@@ -36,53 +36,46 @@ Element.prototype.StoryGround = function (objSettings) {
         v-on:afterNavigation = " objSettings.afterNavigation ?  objSettings.afterNavigation() : false "
       />
     `,
-        getPlayerValues: () => {
-            console.log("nome evento in .js: ");
-            console.log(
-                "getPlayerValues" +
-                    this.childNodes[0].getAttribute("sg1-id-stroy")
-            );
-            console.log("..");
+    getPlayerValues: () => {
+      console.log("nome evento in .js: ");
+      console.log(
+        "getPlayerValues" + this.childNodes[0].getAttribute("sg1-id-stroy")
+      );
+      console.log("..");
 
-            let idStory = this.childNodes[0].getAttribute("sg1-id-stroy");
+      let idStory = this.childNodes[0].getAttribute("sg1-id-stroy");
 
-            window.dispatchEvent(new Event("getPlayerValues" + idStory));
-            let value = JSON.parse(localStorage["sg1Storage" + idStory]);
-            localStorage.removeItem("sg1Storage" + idStory);
-            return value;
-        },
-        getCurrentTabValues: () => {
-            let idStory = this.childNodes[0].getAttribute("sg1-id-stroy");
+      window.dispatchEvent(new Event("getPlayerValues" + idStory));
+      let value = JSON.parse(localStorage["sg1Storage" + idStory]);
+      localStorage.removeItem("sg1Storage" + idStory);
+      return value;
+    },
+    getCurrentTabsValues: () => {
+      let idStory = this.childNodes[0].getAttribute("sg1-id-stroy");
 
-            window.dispatchEvent(new Event("getCurrentTabValues" + idStory));
-            let value = JSON.parse(localStorage["sg1Storage" + idStory]);
-            localStorage.removeItem("sg1Storage" + idStory);
-            return value;
-        },
-        //eventi set
-        setStartPoint: (params) => {
-            let idStory = this.childNodes[0].getAttribute("sg1-id-stroy");
+      window.dispatchEvent(new Event("getCurrentTabsValues" + idStory));
+      let value = JSON.parse(localStorage["sg1Storage" + idStory]);
+      localStorage.removeItem("sg1Storage" + idStory);
+      return value;
+    },
+    //eventi set
+    setStartPoint: (params) => {
+      let idStory = this.childNodes[0].getAttribute("sg1-id-stroy");
 
-            localStorage.setItem(
-                "sg1Storage" + idStory,
-                JSON.stringify(params)
-            );
-            window.dispatchEvent(new Event("setStartPoint" + idStory));
-        },
-        setPlayerValues: (params) => {
-            let idStory = this.childNodes[0].getAttribute("sg1-id-stroy");
+      localStorage.setItem("sg1Storage" + idStory, JSON.stringify(params));
+      window.dispatchEvent(new Event("setStartPoint" + idStory));
+    },
+    setPlayerValues: (params) => {
+      let idStory = this.childNodes[0].getAttribute("sg1-id-stroy");
 
-            localStorage.setItem(
-                "sg1Storage" + idStory,
-                JSON.stringify(params)
-            );
-            window.dispatchEvent(new Event("setPlayerValues" + idStory));
-        },
-    };
+      localStorage.setItem("sg1Storage" + idStory, JSON.stringify(params));
+      window.dispatchEvent(new Event("setPlayerValues" + idStory));
+    },
+  };
 
-    createApp(app).mount(this);
+  createApp(app).mount(this);
 
-    return app;
+  return app;
 };
 
 export {};
