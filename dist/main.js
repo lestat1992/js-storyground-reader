@@ -10963,7 +10963,7 @@
       canEmit: { type: Boolean, default: !0 },
       showToast: { type: Boolean, default: !1 },
     },
-    emits: ["emitByTabs", "onInit", "beforeNavigation", "afterNavigation"],
+    emits: ["emitByNodes", "onInit", "beforeNavigation", "afterNavigation"],
     data: function () {
       return {
         idRendered: !1,
@@ -11464,7 +11464,7 @@
             break;
           case "emit_function":
             t ||
-              (this.canEmit && this.$emit("emitByTabs", o.objToEmit),
+              (this.canEmit && this.$emit("emitByNodes", o.objToEmit),
               this.showToast &&
                 this.$refs.ToastContainerRef.addToast({
                   type: o.type.replaceAll(" ", "_"),
@@ -11886,7 +11886,7 @@
         data: () => ({ objSettings: e, idStory: !1 }),
         components: { game: Rp },
         template:
-          '\n      <game \n        v-bind:idStory="objSettings.idStory"\n        v-bind:editorUsage="objSettings.editorUsage"\n        v-bind:langStory="objSettings.langStory"\n        v-bind:langEditor="objSettings.langEditor"\n        v-bind:strings="objSettings.strings"\n        v-bind:gameData="objSettings.gameData"\n        v-bind:indexMedia="objSettings.indexMedia"\n        v-bind:pathMediaDir="objSettings.pathMediaDir"\n        v-bind:disableIlustration="objSettings.disableIlustration"\n        v-bind:stopLink="objSettings.stopLink"\n        v-bind:width="objSettings.width"\n        v-bind:height="objSettings.height"\n        v-bind:useTheme="objSettings.useTheme"\n        v-bind:canEmit="objSettings.canEmit"\n        v-bind:showToast="objSettings.showToast"\n        v-on:emitByTabs="objSettings.EmitByTabs ? objSettings.EmitByTabs() : false"\n        v-on:onInit="objSettings.OnInit ? objSettings.OnInit() : false"\n        v-on:beforeNavigation = " objSettings.beforeNavigation ? objSettings.beforeNavigation() : false "\n        v-on:afterNavigation = " objSettings.afterNavigation ?  objSettings.afterNavigation() : false "\n      />\n    ',
+          '\n      <game \n        v-bind:idStory="objSettings.idStory"\n        v-bind:editorUsage="objSettings.editorUsage"\n        v-bind:langStory="objSettings.langStory"\n        v-bind:langEditor="objSettings.langEditor"\n        v-bind:strings="objSettings.strings"\n        v-bind:gameData="objSettings.gameData"\n        v-bind:indexMedia="objSettings.indexMedia"\n        v-bind:pathMediaDir="objSettings.pathMediaDir"\n        v-bind:disableIlustration="objSettings.disableIlustration"\n        v-bind:stopLink="objSettings.stopLink"\n        v-bind:width="objSettings.width"\n        v-bind:height="objSettings.height"\n        v-bind:useTheme="objSettings.useTheme"\n        v-bind:canEmit="objSettings.canEmit"\n        v-bind:showToast="objSettings.showToast"\n        v-on:emitByNodes="objSettings.emitByNodes ? objSettings.emitByNodes() : false"\n        v-on:onInit="objSettings.OnInit ? objSettings.OnInit() : false"\n        v-on:beforeNavigation = " objSettings.beforeNavigation ? objSettings.beforeNavigation() : false "\n        v-on:afterNavigation = " objSettings.afterNavigation ?  objSettings.afterNavigation() : false "\n      />\n    ',
         getPlayerValues: () => {
           console.log("nome evento in .js: "),
             console.log(
