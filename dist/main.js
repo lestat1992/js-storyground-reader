@@ -11159,10 +11159,10 @@
             );
           }
         ),
-        window.addEventListener("setStartPoint" + this.idRendered, (e) => {
+        window.addEventListener("setStartNode" + this.idRendered, (e) => {
           let t = JSON.parse(localStorage["sg1Storage" + this.idRendered]);
           localStorage.removeItem("sg1Storage" + this.idRendered),
-            this.setStartPoint(t);
+            this.setStartNode(t);
         }),
         window.addEventListener("setPlayerValues" + this.idRendered, (e) => {
           let t = JSON.parse(localStorage["sg1Storage" + this.idRendered]);
@@ -11704,7 +11704,7 @@
       getCurrentNodesValues() {
         return this.currentTabs;
       },
-      setStartPoint(e) {
+      setStartNode(e) {
         let t;
         (t =
           "string" == typeof e
@@ -11905,10 +11905,10 @@
           let t = JSON.parse(localStorage["sg1Storage" + e]);
           return localStorage.removeItem("sg1Storage" + e), t;
         },
-        setStartPoint: (e) => {
+        setStartNode: (e) => {
           let t = this.childNodes[0].getAttribute("sg1-id-stroy");
           localStorage.setItem("sg1Storage" + t, JSON.stringify(e)),
-            window.dispatchEvent(new Event("setStartPoint" + t));
+            window.dispatchEvent(new Event("setStartNode" + t));
         },
         setPlayerValues: (e) => {
           let t = this.childNodes[0].getAttribute("sg1-id-stroy");

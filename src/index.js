@@ -53,11 +53,11 @@ Element.prototype.StoryGround = function (objSettings) {
       return value;
     },
     //eventi set
-    setStartPoint: (params) => {
+    setStartNode: (params) => {
       let idStory = this.childNodes[0].getAttribute("sg1-id-stroy");
 
       localStorage.setItem("sg1Storage" + idStory, JSON.stringify(params));
-      window.dispatchEvent(new Event("setStartPoint" + idStory));
+      window.dispatchEvent(new Event("setStartNode" + idStory));
     },
     setPlayerValues: (params) => {
       let idStory = this.childNodes[0].getAttribute("sg1-id-stroy");
