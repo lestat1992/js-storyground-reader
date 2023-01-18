@@ -11151,11 +11151,11 @@
             );
         }),
         window.addEventListener(
-          "getCurrentTabsValues" + this.idRendered,
+          "getCurrentNodesValues" + this.idRendered,
           (e) => {
             localStorage.setItem(
               "sg1Storage" + this.idRendered,
-              JSON.stringify(this.getCurrentTabsValues())
+              JSON.stringify(this.getCurrentNodesValues())
             );
           }
         ),
@@ -11701,7 +11701,7 @@
       getPlayerValues() {
         return this.player.stats;
       },
-      getCurrentTabsValues() {
+      getCurrentNodesValues() {
         return this.currentTabs;
       },
       setStartPoint(e) {
@@ -11899,9 +11899,9 @@
           let t = JSON.parse(localStorage["sg1Storage" + e]);
           return localStorage.removeItem("sg1Storage" + e), t;
         },
-        getCurrentTabsValues: () => {
+        getCurrentNodesValues: () => {
           let e = this.childNodes[0].getAttribute("sg1-id-stroy");
-          window.dispatchEvent(new Event("getCurrentTabsValues" + e));
+          window.dispatchEvent(new Event("getCurrentNodesValues" + e));
           let t = JSON.parse(localStorage["sg1Storage" + e]);
           return localStorage.removeItem("sg1Storage" + e), t;
         },

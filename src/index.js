@@ -37,7 +37,6 @@ Element.prototype.StoryGround = function (objSettings) {
       />
     `,
     getPlayerValues: () => {
-
       let idStory = this.childNodes[0].getAttribute("sg1-id-stroy");
 
       window.dispatchEvent(new Event("getPlayerValues" + idStory));
@@ -45,10 +44,10 @@ Element.prototype.StoryGround = function (objSettings) {
       localStorage.removeItem("sg1Storage" + idStory);
       return value;
     },
-    getCurrentTabsValues: () => {
+    getCurrentNodesValues: () => {
       let idStory = this.childNodes[0].getAttribute("sg1-id-stroy");
 
-      window.dispatchEvent(new Event("getCurrentTabsValues" + idStory));
+      window.dispatchEvent(new Event("getCurrentNodesValues" + idStory));
       let value = JSON.parse(localStorage["sg1Storage" + idStory]);
       localStorage.removeItem("sg1Storage" + idStory);
       return value;
