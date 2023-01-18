@@ -37,11 +37,6 @@ Element.prototype.StoryGround = function (objSettings) {
       />
     `,
     getPlayerValues: () => {
-      console.log("nome evento in .js: ");
-      console.log(
-        "getPlayerValues" + this.childNodes[0].getAttribute("sg1-id-stroy")
-      );
-      console.log("..");
 
       let idStory = this.childNodes[0].getAttribute("sg1-id-stroy");
 
