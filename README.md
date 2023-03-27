@@ -7,7 +7,10 @@ To see the docs [click here](https://storygroundeditor.com/devs/).
 Here's your first example to get you started:
 
 ```js
-document.getElementById("app-test").StoryGround({
+import jsStorygroundReader from "js-storyground-reader";
+import jsonStory from "./jsonStory.json";
+
+document.getElementById("app").StoryGround({
   gameData: jsonStory,
 });
 ```
