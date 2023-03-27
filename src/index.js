@@ -1,7 +1,7 @@
 import { createApp } from "vue";
 import { game } from "vue-storyground-reader";
 
-Element.prototype.StoryGround = function (objSettings) {
+Element.prototype.StoryGround = function (objSettings = {}) {
   let app = {
     name: "StoryGround",
     data() {
